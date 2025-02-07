@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teddy Day</title>
+  <style>
+    body {
+      font-family: 'Indie Flower', cursive;
+      text-align: center;
+      background-color: #fce4ec;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .envelope {
+      cursor: pointer;
+      font-size: 50px;
+      color: #ad1457;
+      transition: transform 0.3s ease;
+    }
+    .envelope:hover {
+      transform: scale(1.1);
+    }
+    .teddy {
+      display: none;
+      font-size: 30px;
+      color: #880e4f;
+      margin-top: 20px;
+      animation: bounce 1s ease infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    .teddy-animation {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .teddy-animation span {
+      position: absolute;
+      display: block;
+      font-size: 100px;
+      animation: teddy 5s linear infinite;
+    }
+    @keyframes teddy {
+      0% { transform: translateX(-100px); }
+      100% { transform: translateX(100vw); }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="envelope" onclick="revealTeddy()">💌</div>
+  <div class="teddy">
+    🧸 To My Dearest Teddy Bear,<br>
+    Gonna Smush You Like a Teddy Pretty Soon! 🧸<br>
+	Happy Teddy Day!<br>
+<img class="animation" id="animation" src="https://media.giphy.com/media/NxC8VtyxqhMtpLoEEN/giphy.gif?cid=ecf05e47f1gjw1em9acjayhn97ss16ebj4p7cqck2j5ph3kx&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="teddy">
+  </div>
+  <div class="teddy-animation">
+    <!-- Teddy animation will be generated here -->
+  </div>
+
+  <script>
+    function revealTeddy() {
+      const envelope = document.querySelector('.envelope');
+      const teddy = document.querySelector('.teddy');
+      const teddyAnimation = document.querySelector('.teddy-animation');
+
+      envelope.style.display = 'none';
+      teddy.style.display = 'block';
+      teddyAnimation.style.display = 'block';
+
+      // Generate teddy animation
+      for (let i = 0; i < 20; i++) {
+        const teddyEmoji = document.createElement('span');
+        teddyEmoji.innerHTML = '🧸';
+        teddyEmoji.style.top = Math.random() * 100 + 'vh';
+        teddyEmoji.style.animationDuration = Math.random() * 3 + 2 + 's';
+        teddyAnimation.appendChild(teddyEmoji);
+      }
+    }
+  </script>
+</body>
+</html>
